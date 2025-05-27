@@ -1,9 +1,9 @@
-# 🐧 Linux Memory Forensics with Volatility 3
+# Linux Memory Forensics with Volatility 3 🐧
 *The Complete CTF-Focused Guide for Bit Wizards*
 
 ---
 
-## 🎯 Welcome to Memory Forensics Mastery
+## Welcome to Memory Forensics Mastery 🎯
 
 This guide was born from necessity - after countless too many frantic queries to Claude and Google asking "how do I find flags in Linux memory dumps again?" 🤦‍♂️
 
@@ -13,22 +13,22 @@ Whether you're a seasoned bit wizard or just starting your memory forensics jour
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents 📚
 1. [CTF Quick Start](#ctf-quick-start) - *Get analyzing and finding flags in 5 minutes*
 2. [Command Reference](#command-reference) - *Quick lookup for plugins and patterns*
 3. [Environment Setup](#environment-setup) - *One-time toolkit preparation*
 4. [Analysis Methodology](#analysis-methodology) - *Streamlined 4-phase investigative workflow*
-5. [Core Investigation Techniques](#core-techniques) - *Essential skills for every analysis*
-6. [CTF-Specific Patterns](#ctf-patterns) - *Competition-focused detection methods*
+5. [Core Investigation Techniques](#core-investigation-techniques) - *Essential skills for every analysis*
+6. [CTF-Specific Patterns](#ctf-specific-patterns) - *Competition-focused detection methods*
 7. [Advanced Techniques](#advanced-techniques) - *Sophisticated analysis for complex scenarios*
-8. [Understanding & Fundamentals](#fundamentals) - *Background knowledge and theory*
-9. [Quick Notes & Resources](#resources) - *Future learning and reference materials*
-10. [Troubleshooting Guide](#troubleshooting) - *Solutions for common problems*
+8. [Understanding & Fundamentals](#understanding--fundamentals) - *Background knowledge and theory*
+9. [Quick Notes & Resources](#quick-notes--resources) - *Future learning and reference materials*
+10. [Troubleshooting Guide](#troubleshooting-guide) - *Solutions for common problems*
 
 ---
 
-## ⚡ CTF Quick Start {#ctf-quick-start}
-*"I have a Linux memory dump and need flags NOW!"*
+## CTF Quick Start
+⚡ *"I have a Linux memory dump and need flags NOW!"*
 
 ### 30-Second System Check (No symbols needed)
 ```bash
@@ -111,8 +111,8 @@ uv run vol.py -f memory.dump linux.mount | grep -E "(overlay|docker)"
 
 ---
 
-## 📖 Command Reference {#command-reference}
-*Essential commands for quick lookup during analysis*
+## Command Reference
+📖 *Essential commands for quick lookup during analysis*
 
 ### Core Analysis Plugins
 
@@ -193,8 +193,8 @@ strings pid.PID.*.dmp | grep -E "^[A-Za-z0-9+/]{20,}={0,2}$"
 
 ---
 
-## 🛠️ Environment Setup {#environment-setup}
-*One-time preparation of your analysis toolkit*
+## Environment Setup
+🛠️ *One-time preparation of your analysis toolkit*
 
 ### Understanding Your Toolkit
 
@@ -287,8 +287,8 @@ uv run vol.py -f test.dump linux.banner
 
 ---
 
-## 📋 Analysis Methodology {#analysis-methodology}
-*Streamlined 4-phase approach for systematic investigation*
+## Analysis Methodology
+📋 *Streamlined 4-phase approach for systematic investigation*
 
 ### Phase 1: System Reconnaissance (2 minutes)
 
@@ -465,8 +465,8 @@ fi
 
 ---
 
-## 🔧 Core Investigation Techniques {#core-techniques}
-*Essential skills for effective Linux memory analysis*
+## Core Investigation Techniques
+🔧 *Essential skills for effective Linux memory analysis*
 
 ### Process Analysis Mastery
 
@@ -606,8 +606,8 @@ grep -E "(\.conf|\.cfg|\.ini|\.yaml|\.json)$" open_files.txt
 
 ---
 
-## 🏴‍☠️ CTF-Specific Patterns {#ctf-patterns}
-*Competition-focused detection methods and common scenarios*
+## CTF-Specific Patterns
+🏴‍☠️ *Competition-focused detection methods and common scenarios*
 
 ### Container & Kubernetes Analysis
 
@@ -784,8 +784,8 @@ grep -E "%[0-9a-fA-F]{2}" bash_history.txt | python -c "import urllib.parse; pri
 
 ---
 
-## 🕵️ Advanced Techniques {#advanced-techniques}
-*Sophisticated analysis for complex scenarios*
+## Advanced Techniques
+🕵️ *Sophisticated analysis for complex scenarios*
 
 ### Rootkit and Kernel-Level Detection
 
@@ -927,8 +927,8 @@ uv run vol.py -f memory.dump linux.envars | grep -E "(POD_NAMESPACE|POD_NAME)" -
 
 ---
 
-## 🧠 Understanding & Fundamentals {#fundamentals}
-*Background knowledge for effective analysis*
+## Understanding & Fundamentals
+🧠 *Background knowledge for effective analysis*
 
 ### Why Linux Memory Analysis is Unique
 
@@ -1014,8 +1014,8 @@ Linux memory analysis faces challenges different from Windows forensics:
 
 ---
 
-## 📚 Quick Notes & Resources for Future Reading {#resources}
-*Expand your knowledge beyond CTF basics*
+## Quick Notes & Resources
+📚 *Expand your knowledge beyond CTF basics*
 
 ### Quick Reference Notes
 
@@ -1219,161 +1219,8 @@ vmware-vdiskmanager -R /path/to/snapshot.vmem
 
 ---
 
-## 📚 Quick Notes & Resources for Future Reading {#resources}
-*Expand your knowledge beyond CTF basics*
-
-### Quick Reference Notes
-
-**Essential Concepts to Remember:**
-- **Symbol Criticality**: Linux kernel symbols must match exactly - even one build number difference breaks analysis
-- **Container Detection Pattern**: Look for overlay mounts + multiple PID 1 processes + containerized environment variables
-- **Hidden Process Detection**: `linux.pslist` vs `linux.psscan` comparison reveals rootkit activity
-- **Flag Location Priority**: Bash history (40%) > Environment vars (30%) > Process args (20%) > Memory dumps (10%)
-- **Network Analysis Focus**: External IPs + non-standard ports + process-to-connection mapping
-- **Timeline Construction**: Bash commands + PID sequences + network states + file access patterns
-
-**Memory Layout Reminders:**
-```
-Kernel Space    → Always at high addresses (0xFFFF...)
-Stack          → Grows downward, contains function calls
-Heap           → Grows upward, dynamic allocations  
-Libraries      → Shared objects and mapped files
-Program Code   → Text segment with executable code
-```
-
-**CTF Time Management Framework:**
-- **0-5 min**: Symbol setup + flag trinity (bash/envars/psaux)
-- **5-10 min**: Anomaly detection if no immediate flags
-- **10-20 min**: Deep dive on suspicious processes
-- **20+ min**: Memory extraction and comprehensive analysis
-
-### Essential Resources for Deep Learning
-
-**Official Documentation:**
-- **Volatility 3 Docs**: https://volatility3.readthedocs.io/en/stable/
-- **Linux Kernel Documentation**: https://kernel.org/doc/html/latest/
-- **Container Security Guide**: https://kubernetes.io/docs/concepts/security/
-
-**Symbol and Tool Repositories:**
-- **Primary Symbol Repo**: https://github.com/Abyss-W4tcher/volatility3-symbols
-- **Community Plugins**: https://github.com/volatilityfoundation/community3
-- **Volatility Foundation**: https://github.com/volatilityfoundation/volatility3
-
-**Advanced Learning Materials:**
-- **"The Art of Memory Forensics"** by Michael Hale Ligh et al. (comprehensive theory)
-- **Linux Kernel Development** by Robert Love (kernel internals)
-- **Container Security** by Liz Rice (modern container environments)
-- **Practical Malware Analysis** by Michael Sikorski (analysis techniques)
-
-### Practice and Training Resources
-
-**CTF Archives with Memory Challenges:**
-- **DigitalCorpora**: https://digitalcorpora.org/corpora/memory-images
-- **DFIR.it Memory Samples**: https://www.dfir.it/blog/2015/12/26/memory-samples/
-- **Volatility Test Images**: https://github.com/volatilityfoundation/volatility/wiki/Memory-Samples
-
-**Hands-On Labs:**
-- **SANS FOR508**: Advanced Incident Response and Digital Forensics
-- **Cybrary Memory Forensics**: Free online courses
-- **Autopsy Memory Analysis**: Digital forensics platform with memory modules
-
-**Community Resources:**
-- **r/computerforensics**: Active Reddit community for memory forensics
-- **DFIR Discord**: Real-time help and discussions
-- **Volatility Foundation Blog**: Latest techniques and research
-
-### Advanced Topics for Further Study
-
-**Kernel-Level Analysis:**
-- Custom kernel module development for forensics
-- Advanced rootkit detection beyond standard plugins
-- Hypervisor-level memory acquisition techniques
-- UEFI/BIOS memory analysis
-
-**Container and Cloud Forensics:**
-- Kubernetes cluster memory analysis
-- Docker container escape detection
-- Cloud provider memory acquisition (AWS, Azure, GCP)
-- Serverless environment memory analysis
-
-**Specialized Environments:**
-- Embedded Linux system analysis
-- IoT device memory forensics  
-- Android Linux kernel analysis
-- Custom distribution memory layouts
-
-**Tool Development:**
-- Writing custom Volatility 3 plugins
-- Memory acquisition tool development
-- Automated analysis pipeline creation
-- Machine learning for memory pattern detection
-
-### Creating Your Own Lab Environment
-
-**Virtual Machine Setup:**
-```bash
-# Ubuntu lab environment
-vagrant init ubuntu/focal64
-vagrant up
-# Install LiME for memory acquisition
-git clone https://github.com/504ensicsLabs/LiME.git
-cd LiME/src && make
-```
-
-**Container Lab Environment:**
-```bash
-# Docker environment for practice
-docker run -it --privileged ubuntu:20.04
-# Install practice tools and create scenarios
-apt update && apt install -y python3 netcat-openbsd
-```
-
-**Memory Acquisition Practice:**
-```bash
-# LiME acquisition command
-insmod lime.ko "path=/tmp/memory.lime format=lime"
-# VMware snapshot method
-vmware-vdiskmanager -R /path/to/snapshot.vmem
-```
-
-### Quick Troubleshooting Checklist
-
-**Before You Start Analysis:**
-- [ ] Kernel version extracted with `linux.banner`
-- [ ] Exact symbol file downloaded and verified
-- [ ] Environment variable `VOLATILITY3_SYMBOL_DIRS` set
-- [ ] Basic plugin test (`linux.pslist`) successful
-
-**When Analysis Seems Wrong:**
-- [ ] Cross-check with multiple plugins (pslist vs psscan)
-- [ ] Verify timestamp consistency across artifacts
-- [ ] Check for container environments (overlay mounts)
-- [ ] Confirm process parent-child relationships make sense
-
-**CTF-Specific Verification:**
-- [ ] Searched all common flag locations (trinity approach)
-- [ ] Checked encoded content (base64, URL encoding)
-- [ ] Examined container environment variables
-- [ ] Analyzed memory dumps of suspicious processes
-
-### Staying Current
-
-**Follow for Latest Developments:**
-- **@volatility** on Twitter for framework updates
-- **DFIR blogs** for new techniques and case studies  
-- **Security conferences** (SANS, BlackHat, DEF CON) for emerging threats
-- **Academic papers** on memory forensics research
-
-**Contributing Back:**
-- Report bugs and feature requests to Volatility Foundation
-- Share custom plugins with the community
-- Document novel analysis techniques
-- Mentor newcomers in memory forensics
-
----
-
-## 🚨 Troubleshooting Guide {#troubleshooting}
-*Solutions for common Linux analysis problems*
+## Troubleshooting Guide
+🚨 *Solutions for common Linux analysis problems*
 
 ### Symbol-Related Issues (90% of problems)
 
@@ -1620,7 +1467,7 @@ uv run vol.py -f memory.dump linux.envars | grep -E "(DOCKER|KUBERNETES|CONTAINE
 
 ---
 
-## 🎉 Best Practices Summary
+## Best Practices Summary 🎉
 
 ### CTF Success Factors
 
