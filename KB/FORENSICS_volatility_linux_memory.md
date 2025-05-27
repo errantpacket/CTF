@@ -3,7 +3,7 @@
 
 ---
 
-## Welcome to Memory Forensics Mastery 🎯
+## Welcome to Linux Memory Forensics CTF Mastery 🎯
 
 This guide was born from necessity - after countless too many frantic queries to Claude and Google asking "how do I find flags in Linux memory dumps again?" 🤦‍♂️
 
