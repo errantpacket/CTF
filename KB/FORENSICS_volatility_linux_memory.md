@@ -9,7 +9,7 @@ This guide was born from necessity - after countless too many frantic queries to
 
 What this is: A solid updated reference page for forensics CTFs
 
-What this is not: A training course in using Volatility, see [https://memoryanalysis.net/](https://memoryanalysis.net/) if thats your thing.
+What this is **NOT**: A training course in using Volatility, see [https://memoryanalysis.net/](https://memoryanalysis.net/) if thats your thing.
 
 **Special thanks to the BuyLowShellHigh CTF team** for their contributions, encouragement, and the memory forensics challenges that shaped this methodology. 
 
