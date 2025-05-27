@@ -201,6 +201,7 @@ strings pid.PID.*.dmp | grep -E "^[A-Za-z0-9+/]{20,}={0,2}$"
 Before installation, let's understand the tools that make Linux memory analysis possible:
 
 **Volatility 3: The Memory Analysis Framework**
+
 Volatility 3 is the latest generation of the industry-standard memory forensics framework. Unlike Volatility 2's add-on Linux plugins, V3 has Linux analysis built into its core with:
 - **Native Linux Support**: First-class citizen rather than afterthought
 - **Modern Architecture**: Clean plugin system and significantly better performance  
@@ -209,6 +210,7 @@ Volatility 3 is the latest generation of the industry-standard memory forensics 
 - **Container Awareness**: Built-in understanding of modern containerized environments
 
 **uv: The Modern Python Package Manager**
+
 uv is a next-generation Python package manager written in Rust, designed to replace pip with dramatically improved performance:
 - **Speed**: 10-100x faster than pip for package operations
 - **Reliability**: Better dependency resolution prevents conflicts
@@ -1183,6 +1185,25 @@ insmod lime.ko "path=/tmp/memory.lime format=lime"
 vmware-vdiskmanager -R /path/to/snapshot.vmem
 ```
 
+### Staying Current
+
+**Follow for Latest Developments:**
+- **@volatility** on Twitter for framework updates
+- **DFIR blogs** for new techniques and case studies  
+- **Security conferences** (SANS, BlackHat, DEF CON) for emerging threats
+- **Academic papers** on memory forensics research
+
+**Contributing Back:**
+- Report bugs and feature requests to Volatility Foundation
+- Share custom plugins with the community
+- Document novel analysis techniques
+- Mentor newcomers in memory forensics
+
+---
+
+## Troubleshooting Guide
+🚨 *Solutions for common Linux analysis problems*
+
 ### Quick Troubleshooting Checklist
 
 **Before You Start Analysis:**
@@ -1202,25 +1223,6 @@ vmware-vdiskmanager -R /path/to/snapshot.vmem
 - [ ] Checked encoded content (base64, URL encoding)
 - [ ] Examined container environment variables
 - [ ] Analyzed memory dumps of suspicious processes
-
-### Staying Current
-
-**Follow for Latest Developments:**
-- **@volatility** on Twitter for framework updates
-- **DFIR blogs** for new techniques and case studies  
-- **Security conferences** (SANS, BlackHat, DEF CON) for emerging threats
-- **Academic papers** on memory forensics research
-
-**Contributing Back:**
-- Report bugs and feature requests to Volatility Foundation
-- Share custom plugins with the community
-- Document novel analysis techniques
-- Mentor newcomers in memory forensics
-
----
-
-## Troubleshooting Guide
-🚨 *Solutions for common Linux analysis problems*
 
 ### Symbol-Related Issues (90% of problems)
 
